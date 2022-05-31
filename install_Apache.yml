@@ -1,0 +1,13 @@
+---
+- name: Install Apache Web server and make it start after reboot
+  hosts: STAGING
+  become: yes
+
+  tasks:
+  - name: Install Apache
+    yum: name=httpd state=latest
+
+  - name: Enable Apache after each boot
+    service: name=httpd state=started enabled=yes
+
+...
